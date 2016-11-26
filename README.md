@@ -8,6 +8,7 @@ python converter.py input.tmTheme output.xml
 ```
 
 Files must be placed in a specific location for Qt Creator to pick them up: These are:
+
 | OS      | Location                              |
 | --------|---------------------------------------|
 | Windows | ???                                   |
