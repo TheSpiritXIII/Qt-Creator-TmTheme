@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<style-scheme version="1.0" name="Monokai">
+	<style name="Text" foreground="#F8F8F2" background="#272822" />
+	<style name="Type" foreground="#F8F8F2" background="#272822" />
+	<style name="Enumeration" foreground="#F8F8F2" background="#272822" />
+	<style name="Selection" background="#49483E" />
+	<style name="CurrentLine" background="#3E3D32" />
+	<style name="VisualWhitespace" foreground="#3B3A32" />
+	<style name="Comment" foreground="#75715E" />
+	<style name="String" foreground="#E6DB74" />
+	<style name="Number" foreground="#AE81FF" />
+	<style name="Field" />
+	<style name="Keyword" foreground="#F92672" />
+	<style name="Preprocessor" foreground="#F92672" />
+	<style name="PrimitiveType" foreground="#66D9EF" italic="true" />
+	<style name="Function" foreground="#A6E22E" />
+</style-scheme>

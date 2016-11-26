@@ -1,14 +1,6 @@
 #!/usr/bin/env python3
+import sys
 import xml.etree.ElementTree as ET
-
-xml_file = open("input.xml", 'r')
-file_contents = xml_file.read()
-
-# Filter out all control characters.
-mpa = dict.fromkeys(range(32))
-file_contents = file_contents.translate(mpa)
-
-tree = ET.fromstring(file_contents)
 
 def parse_value(element):
 	if element.tag == "string":
@@ -54,6 +46,16 @@ def parse_dict(root):
 
 	return sequence
 
+def parse_file(filename):
+	xml_file = open(filename, 'r')
+	file_contents = xml_file.read()
+
+	# Filter out all control characters.
+	mpa = dict.fromkeys(range(32))
+	file_contents = file_contents.translate(mpa)
+
+	return parse_dict(ET.fromstring(file_contents)[0])
+
 def write_style(file, name, foreground, background, italic):
 	file.write("\t<style name=\"" + name + "\" ")
 	if foreground:
@@ -71,9 +73,10 @@ def create_file(filename, data):
 	f.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
 	f.write("<style-scheme version=\"1.0\" name=\"" + data["name"] + "\">\n")
 
-	gutter_settings = data["gutterSettings"]
-	write_style(f, "LineNumber", gutter_settings["foreground"], None, False)
-	write_style(f, "DisabledCode", gutter_settings["foreground"], None, False)
+	if "gutterSettings" in data:
+		gutter_settings = data["gutterSettings"]
+		write_style(f, "LineNumber", gutter_settings["foreground"], None, False)
+		write_style(f, "DisabledCode", gutter_settings["foreground"], None, False)
 
 	key_map = {
 		"comment": ["Comment"],
@@ -84,7 +87,8 @@ def create_file(filename, data):
 		"keyword": ["Keyword", "Preprocessor"],
 		"keyword.operator": ["Operator"],
 		"variable": ["Field"],
-		"storage": ["PrimitiveType"]
+		# "storage": ["PrimitiveType"],
+		"storage.type": ["PrimitiveType"]
 	}
 
 	for setting in data["settings"]:
@@ -120,4 +124,11 @@ def create_file(filename, data):
 
 	f.write("</style-scheme>\n")
 
-create_file("one_dark.xml", parse_dict(tree[0]))
+def main():
+	if len(sys.argv) != 3:
+		print("Invalid number of arguments. Must be: `converter.py input output`")
+		return
+
+	create_file(sys.argv[2], parse_file(sys.argv[1]))
+
+main()

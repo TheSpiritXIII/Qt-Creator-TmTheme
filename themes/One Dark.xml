@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<style-scheme version="1.0" name="One Dark">
+	<style name="LineNumber" foreground="#747369" />
+	<style name="DisabledCode" foreground="#747369" />
+	<style name="Text" foreground="#ABB2BF" background="#282C34" />
+	<style name="Type" foreground="#ABB2BF" background="#282C34" />
+	<style name="Enumeration" foreground="#ABB2BF" background="#282C34" />
+	<style name="Selection" background="#3D4350" />
+	<style name="CurrentLine" background="#2B313A" />
+	<style name="VisualWhitespace" foreground="#747369" />
+	<style name="Comment" foreground="#5C6370" />
+	<style name="Operator" foreground="#ABB2BF" />
+	<style name="Keyword" foreground="#C678DD" />
+	<style name="Preprocessor" foreground="#C678DD" />
+	<style name="Field" foreground="#E06C75" />
+	<style name="Function" foreground="#61AFEF" />
+	<style name="String" foreground="#98C379" />
+	<style name="Number" foreground="#D19A66" />
+	<style name="Constant" foreground="#D19A66" />
+</style-scheme>
